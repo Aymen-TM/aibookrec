@@ -4,7 +4,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
   bookTitle: string | undefined,
-  image:string
 }
 
 export default async function handler(
@@ -22,12 +21,7 @@ export default async function handler(
 
     // ChatGPT query
     const title = await query(prompt)
-
-    //Google Books api
-    const googleApiRes = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${title}`)
-    const googleApiData = await googleApiRes.json()
-    const image = googleApiData.items[0].volumeInfo.imageLinks.thumbnail
     
     
-  res.status(200).json({ bookTitle: title,image:image })
+  res.status(200).json({ bookTitle: title})
 }
