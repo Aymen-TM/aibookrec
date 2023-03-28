@@ -29,7 +29,7 @@ export async function getServerSideProps({ query }:any) {
 
  
 
-  const res = await fetch("http://localhost:3000/api/gpt/AskBook",{
+  const res = await fetch(`${process.env.API_URL}api/gpt/AskBook`,{
     method:"POST",
     headers:{
       'Content-Type':'application/json'
