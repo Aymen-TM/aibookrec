@@ -78,7 +78,7 @@ const Form = (props: Props) => {
               }}
             >
               {bookCategories.map((category) => (
-                <option>{category}</option>
+                <option key={category}>{category}</option>
               ))}
             </select>
           </label>
