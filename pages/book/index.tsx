@@ -4,13 +4,13 @@ import React from 'react'
 
 type Props = {}
 
-const index = ({resData,image}: any) => {
+const index = ({resData}: any) => {
   
  
   return (
     <div className='h-screen'>
       <div className='h-full w-full flex flex-col justify-center items-center'>
-        <Image src={image} width={200} height={200} alt="thumbnail" />
+        <Image src={resData.image} width={200} height={200} alt="thumbnail" />
         <h1>{resData.bookTitle}</h1>
       </div>
     </div>
@@ -39,12 +39,9 @@ export async function getServerSideProps({ query }:any) {
   const resData = await res.json()
 
 
-    //Google Books api
-    const googleApiRes = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${resData.bookTitle}`)
-    const googleApiData = await googleApiRes.json()
-    const image = googleApiData.items[0].volumeInfo.imageLinks.thumbnail
+
 
  
   
-  return { props: { resData,image } };
+  return { props: { resData } };
 }
